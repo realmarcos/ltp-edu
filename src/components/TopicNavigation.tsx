@@ -4,7 +4,8 @@
  */
 import { theme } from '@/config/theme';
 import { MaterialIcons } from '@expo/vector-icons';
-import { StyleSheet, View } from 'react-native';
+import { HStack } from '@gluestack-ui/themed';
+import { StyleSheet } from 'react-native';
 import { Button } from './Button';
 
 interface TopicNavigationProps {
@@ -25,7 +26,7 @@ export function TopicNavigation({
   disableNext = false,
 }: TopicNavigationProps) {
   return (
-    <View style={styles.container}>
+    <HStack style={styles.container}>
       <Button
         label={previousLabel}
         onPress={onPrevious || (() => {})}
@@ -61,7 +62,7 @@ export function TopicNavigation({
           />
         }
       />
-    </View>
+    </HStack>
   );
 }
 

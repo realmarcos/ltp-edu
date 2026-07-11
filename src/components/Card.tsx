@@ -3,14 +3,9 @@
  * Usado em módulos, tópicos e conteúdo
  */
 import { theme } from '@/config/theme';
+import { Box, HStack, Heading, Pressable, Text, VStack } from '@gluestack-ui/themed';
 import React from 'react';
-import {
-    GestureResponderEvent,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import { GestureResponderEvent, StyleSheet } from 'react-native';
 
 interface CardProps {
   title: string;
@@ -30,22 +25,22 @@ export function Card({
   const isClickable = !!onPress;
 
   return (
-    <TouchableOpacity
+    <Pressable
       disabled={!isClickable}
       onPress={onPress}
-      activeOpacity={isClickable ? 0.7 : 1}
+      sx={{ ':active': { opacity: isClickable ? 0.7 : 1 } }}
       style={[styles.container, styles[variant]]}
     >
-      <View style={styles.content}>
-        {icon && <View style={styles.iconContainer}>{icon}</View>}
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>{title}</Text>
+      <HStack style={styles.content}>
+        {icon && <Box style={styles.iconContainer}>{icon}</Box>}
+        <VStack style={styles.textContainer}>
+          <Heading style={styles.title}>{title}</Heading>
           {description && (
             <Text style={styles.description}>{description}</Text>
           )}
-        </View>
-      </View>
-    </TouchableOpacity>
+        </VStack>
+      </HStack>
+    </Pressable>
   );
 }
 

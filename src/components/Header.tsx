@@ -1,9 +1,10 @@
 /**
  * Componente de Header Customizado
- * Exibido no topo de cada tela
+ * Exibido no topo de cada tela — construído com gluestack-ui
  */
 import { theme } from '@/config/theme';
-import { StyleSheet, Text, View } from 'react-native';
+import { Box, Heading, Text } from '@gluestack-ui/themed';
+import { StyleSheet } from 'react-native';
 
 interface HeaderProps {
   title: string;
@@ -14,10 +15,10 @@ interface HeaderProps {
 
 export function Header({ title, subtitle }: HeaderProps) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+    <Box style={styles.container}>
+      <Heading style={styles.title}>{title}</Heading>
       {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
-    </View>
+    </Box>
   );
 }
 

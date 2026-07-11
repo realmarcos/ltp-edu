@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { config as gluestackConfig } from '@gluestack-ui/config';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 interface AppWrapperProps {
   children: React.ReactNode;
@@ -15,14 +16,16 @@ interface AppWrapperProps {
 
 export function AppWrapper({ children }: AppWrapperProps) {
   return (
-    <GluestackUIProvider config={gluestackConfig}>
-      <ThemeProvider>
-        <FontSizeProvider>
-          <ProgressProvider>
-            {children}
-          </ProgressProvider>
-        </FontSizeProvider>
-      </ThemeProvider>
-    </GluestackUIProvider>
+    <SafeAreaProvider>
+      <GluestackUIProvider config={gluestackConfig}>
+        <ThemeProvider>
+          <FontSizeProvider>
+            <ProgressProvider>
+              {children}
+            </ProgressProvider>
+          </FontSizeProvider>
+        </ThemeProvider>
+      </GluestackUIProvider>
+    </SafeAreaProvider>
   );
 }

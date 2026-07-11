@@ -5,9 +5,10 @@
  */
 import { theme } from '@/config/theme';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Box, HStack, Pressable, Text } from '@gluestack-ui/themed';
 import * as Clipboard from 'expo-clipboard';
 import { useState } from 'react';
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet } from 'react-native';
 
 interface CodeBlockProps {
   code: string;
@@ -31,13 +32,13 @@ export function CodeBlock({ code, language = 'kotlin', title }: CodeBlockProps) 
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
+    <Box style={styles.container}>
+      <HStack style={styles.header}>
         {title && <Text style={styles.title}>{title}</Text>}
-        <TouchableOpacity
+        <Pressable
           style={styles.copyButton}
           onPress={handleCopyCode}
-          activeOpacity={0.7}
+          sx={{ ':active': { opacity: 0.7 } }}
           accessibilityRole="button"
           accessibilityLabel="Copiar código"
         >
@@ -54,16 +55,16 @@ export function CodeBlock({ code, language = 'kotlin', title }: CodeBlockProps) 
           >
             {justCopied ? 'Copiado!' : 'Copiar'}
           </Text>
-        </TouchableOpacity>
-      </View>
+        </Pressable>
+      </HStack>
 
-      <View style={styles.languageLabel}>
+      <Box style={styles.languageLabel}>
         <Text style={styles.languageText}>{language}</Text>
-      </View>
-      <View style={styles.codeContainer}>
+      </Box>
+      <Box style={styles.codeContainer}>
         <Text style={styles.code}>{code}</Text>
-      </View>
-    </View>
+      </Box>
+    </Box>
   );
 }
 

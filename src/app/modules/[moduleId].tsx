@@ -7,16 +7,11 @@ import { Header } from '@/components/Header';
 import { theme } from '@/config/theme';
 import { modules } from '@/constants/data';
 import { MaterialIcons } from '@expo/vector-icons';
+import { ScrollView, Text, Box as View } from '@gluestack-ui/themed';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo } from 'react';
-import {
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ModulesScreen() {
   const router = useRouter();

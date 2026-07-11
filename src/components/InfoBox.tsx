@@ -4,7 +4,8 @@
  */
 import { theme } from '@/config/theme';
 import { MaterialIcons } from '@expo/vector-icons';
-import { StyleSheet, Text, View } from 'react-native';
+import { Box, Text, VStack } from '@gluestack-ui/themed';
+import { StyleSheet } from 'react-native';
 
 export type InfoBoxType = 'info' | 'success' | 'warning' | 'error';
 
@@ -51,20 +52,20 @@ export function InfoBox({
   const style = typeStyles[type];
 
   return (
-    <View style={[styles.container, { backgroundColor: style.backgroundColor, borderLeftColor: style.borderLeftColor }]}>
+    <Box style={[styles.container, { backgroundColor: style.backgroundColor, borderLeftColor: style.borderLeftColor }]}>
       <MaterialIcons
         name={icon as any}
         size={24}
         color={style.iconColor}
         style={styles.icon}
       />
-      <View style={styles.content}>
+      <VStack style={styles.content}>
         <Text style={[styles.title, { color: style.textColor }]}>{title}</Text>
         <Text style={[styles.message, { color: theme.colors.text.primary }]}>
           {message}
         </Text>
-      </View>
-    </View>
+      </VStack>
+    </Box>
   );
 }
 

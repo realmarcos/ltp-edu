@@ -3,7 +3,8 @@
  * Mostra a posição do tópico atual no módulo
  */
 import { theme } from '@/config/theme';
-import { StyleSheet, Text, View } from 'react-native';
+import { Box, Progress, ProgressFilledTrack, Text } from '@gluestack-ui/themed';
+import { StyleSheet } from 'react-native';
 
 interface ProgressBarProps {
   current: number;
@@ -14,19 +15,14 @@ export function ProgressBar({ current, total }: ProgressBarProps) {
   const percentage = (current / total) * 100;
 
   return (
-    <View style={styles.container}>
-      <View style={styles.barBackground}>
-        <View
-          style={[
-            styles.barFill,
-            { width: `${percentage}%` },
-          ]}
-        />
-      </View>
+    <Box style={styles.container}>
+      <Progress value={percentage} style={styles.barBackground}>
+        <ProgressFilledTrack style={styles.barFill} />
+      </Progress>
       <Text style={styles.text}>
         {current} de {total}
       </Text>
-    </View>
+    </Box>
   );
 }
 

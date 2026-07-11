@@ -3,14 +3,13 @@
  * Botão primário, secundário e outline com feedback visual
  */
 import { theme } from '@/config/theme';
-import React, { useState } from 'react';
+import { ButtonText, Button as GSButton } from '@gluestack-ui/themed';
+import React from 'react';
 import {
-    AccessibilityState,
-    GestureResponderEvent,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  AccessibilityState,
+  GestureResponderEvent,
+  StyleSheet,
+  View,
 } from 'react-native';
 
 interface ButtonProps {
@@ -34,42 +33,29 @@ export function Button({
   fullWidth = false,
   accessibilityLabel,
 }: ButtonProps) {
-  const [isPressed, setIsPressed] = useState(false);
-
-  const handlePressIn = () => {
-    setIsPressed(true);
-  };
-
-  const handlePressOut = () => {
-    setIsPressed(false);
-  };
-
   const accessibilityState: AccessibilityState = {
     disabled: disabled,
   };
 
   return (
-    <TouchableOpacity
+    <GSButton
       style={[
         styles.button,
         styles[variant],
         styles[size],
         disabled && styles.disabled,
-        isPressed && styles.pressed,
         fullWidth && styles.fullWidth,
       ]}
       onPress={onPress}
-      disabled={disabled}
-      activeOpacity={0.7}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
+      isDisabled={disabled}
+      sx={{ ':active': { opacity: 0.85 } }}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel || label}
       accessibilityState={accessibilityState}
     >
       <View style={styles.content}>
         {icon && <View style={styles.iconContainer}>{icon}</View>}
-        <Text
+        <ButtonText
           style={[
             styles.text,
             styles[`text${variant}`],
@@ -78,9 +64,9 @@ export function Button({
           maxFontSizeMultiplier={1.3}
         >
           {label}
-        </Text>
+        </ButtonText>
       </View>
-    </TouchableOpacity>
+    </GSButton>
   );
 }
 
@@ -140,10 +126,6 @@ const styles = StyleSheet.create({
 
   disabled: {
     opacity: 0.6,
-  },
-
-  pressed: {
-    opacity: 0.85,
   },
 
   fullWidth: {

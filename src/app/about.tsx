@@ -8,16 +8,14 @@ import { aboutData } from '@/constants/data';
 import { useFontSize, type FontSizeMode } from '@/context/FontSizeContext';
 import { useTheme } from '@/context/ThemeContext';
 import { MaterialIcons } from '@expo/vector-icons';
+import { ScrollView, Text, Box as View } from '@gluestack-ui/themed';
 import { useRouter } from 'expo-router';
 import {
-    Linking,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Linking,
+  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function AboutScreen() {
   const router = useRouter();

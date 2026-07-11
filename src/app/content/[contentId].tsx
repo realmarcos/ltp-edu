@@ -13,17 +13,15 @@ import { contents } from '@/constants/data';
 import { useProgress } from '@/context/ProgressContext';
 import { useTopicNavigation } from '@/hooks/use-topic-navigation';
 import { MaterialIcons } from '@expo/vector-icons';
+import { ScrollView, Text, Box as View } from '@gluestack-ui/themed';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo } from 'react';
 import {
-    Alert,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Alert,
+  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ContentScreen() {
   const router = useRouter();
@@ -228,7 +226,7 @@ export default function ContentScreen() {
         }
       >
         <MaterialIcons
-          name={isCompleted ? 'check-circle' : 'circle-outline'}
+          name={isCompleted ? 'check-circle' : 'radio-button-unchecked'}
           size={20}
           color={isCompleted ? theme.colors.white : theme.colors.primary[600]}
         />
