@@ -10,11 +10,13 @@ import { modules } from '@/constants/data';
 import { useResponsive } from '@/hooks/use-responsive';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ScrollView, Text, Box as View } from '@gluestack-ui/themed';
+import { useBatteryLevel } from 'expo-battery';
 import { useRouter } from 'expo-router';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
+    const batteryLevel = useBatteryLevel();
   const router = useRouter();
   const { isSmallScreen, width } = useResponsive();
 
@@ -85,7 +87,9 @@ export default function HomeScreen() {
             </Text>
           </View>
         </View>
-
+        <View>
+          <Button onPress={() => router.push('/camera-example')} title="Exemplo de Câmera"  />
+        </View>
         {/* Módulos */}
         <View style={styles.modulesSection}>
           <Text
@@ -98,6 +102,10 @@ export default function HomeScreen() {
           >
             Escolha um módulo
           </Text>
+
+          <View>
+            <Text style={{color: theme.colors.primary[600], fontSize: 20}}> Status da minha beteria: {batteryLevel}</Text>
+          </View>
 
           <View style={numColumns === 2 ? styles.modulesGrid : undefined}>
             {modules.map((module, index) => (

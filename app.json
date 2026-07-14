@@ -32,6 +32,15 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Habilitar acesso à câmera $(PRODUCT_NAME)",
+          "microphonePermission": "Habilitar acesso ao microfone $(PRODUCT_NAME)",
+          "recordAudioAndroid": true,
+          "barcodeScannerEnabled": true
+        }
       ]
     ],
     "experiments": {

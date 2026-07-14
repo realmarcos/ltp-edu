@@ -52,6 +52,14 @@ export default function RootLayout() {
             presentation: 'modal',
           }}
         />
+
+        <Stack.Screen
+          name="camera-example"
+          options={{
+            title: 'Exemplo de Câmera',
+            headerShown: true,
+          }}
+        />
       </Stack>
     </AppWrapper>
   );
