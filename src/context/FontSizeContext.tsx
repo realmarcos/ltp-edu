@@ -2,10 +2,11 @@
  * Contexto de Tamanho de Fonte
  * Gerencia o tamanho da fonte global
  */
+import type { FontSizeMode } from '@/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
-export type FontSizeMode = 'sm' | 'md' | 'lg' | 'xl';
+export type { FontSizeMode };
 
 interface FontSizeContextType {
   fontSizeMode: FontSizeMode;

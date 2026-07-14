@@ -2,6 +2,7 @@
  * Contexto de Progresso
  * Gerencia o progresso do usuário (tópicos concluídos, etc)
  */
+import { getModuleProgress } from '@/services';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
@@ -72,7 +73,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   };
 
   const getProgressPercentage = (moduleId: string): number => {
-    return 0;
+    return getModuleProgress(moduleId, completedTopics);
   };
 
   if (isLoading) {

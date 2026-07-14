@@ -1,34 +1,9 @@
 /**
- * Dados fictícios dos módulos e conteúdos
- * Estrutura de dados para a aplicação
+ * Fonte de dados do curso
+ * Camada de dados bruta consumida pela camada de serviços (@/services).
+ * Telas e hooks NÃO devem importar este arquivo diretamente — usem os serviços.
  */
-
-export interface Topic {
-  id: string;
-  title: string;
-  description: string;
-}
-
-export interface Module {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  topics: Topic[];
-  color: string;
-}
-
-export interface Content {
-  id: string;
-  moduleId: string;
-  topicId: string;
-  title: string;
-  description: string;
-  explanation: string;
-  codeExample: string;
-  codeLanguage: string;
-  keyPoints: string[];
-}
+import type { AboutData, Content, Module } from '@/types';
 
 export const modules: Module[] = [
   {
@@ -306,8 +281,7 @@ val resultado = somar(2, 3)`,
   },
 ];
 
-// Dados sobre o aplicativo
-export const aboutData = {
+export const aboutData: AboutData = {
   appName: 'LTP-edu',
   version: '1.0.0',
   description:

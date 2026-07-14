@@ -9,8 +9,6 @@ import { StyleSheet } from 'react-native';
 interface HeaderProps {
   title: string;
   subtitle?: string;
-  showBackButton?: boolean;
-  onBackPress?: () => void;
 }
 
 export function Header({ title, subtitle }: HeaderProps) {

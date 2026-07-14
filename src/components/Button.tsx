@@ -6,10 +6,10 @@ import { theme } from '@/config/theme';
 import { ButtonText, Button as GSButton } from '@gluestack-ui/themed';
 import React from 'react';
 import {
-  AccessibilityState,
-  GestureResponderEvent,
-  StyleSheet,
-  View,
+    AccessibilityState,
+    GestureResponderEvent,
+    StyleSheet,
+    View,
 } from 'react-native';
 
 interface ButtonProps {
@@ -56,10 +56,7 @@ export function Button({
       <View style={styles.content}>
         {icon && <View style={styles.iconContainer}>{icon}</View>}
         <ButtonText
-          style={[
-            styles.text,
-            styles[`text${variant}`],
-          ]}
+          style={[styles.text, textVariantStyles[variant]]}
           allowFontScaling={true}
           maxFontSizeMultiplier={1.3}
         >
@@ -138,15 +135,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-  textprimary: {
+  textPrimary: {
     color: theme.colors.white,
   },
 
-  textsecondary: {
+  textSecondary: {
     color: theme.colors.white,
   },
 
-  textoutline: {
+  textOutline: {
     color: theme.colors.primary[600],
   },
 });
+
+const textVariantStyles = {
+  primary: styles.textPrimary,
+  secondary: styles.textSecondary,
+  outline: styles.textOutline,
+} as const;

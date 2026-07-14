@@ -2,11 +2,10 @@
  * Contexto de Tema (Escuro/Claro)
  * Gerencia o tema global da aplicação
  */
+import type { ThemeMode } from '@/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
-
-type ThemeMode = 'light' | 'dark' | 'system';
 
 interface ThemeContextType {
   themeMode: ThemeMode;
